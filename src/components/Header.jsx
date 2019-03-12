@@ -11,6 +11,14 @@ import {
   
 
 export default class Header extends Component {
+    constructor (props) {
+        super(props);
+    
+        this.state = {
+          username: '',
+        };
+    }
+
     handleSignOut(e) {
         e.preventDefault();
         signUserOut(window.location.origin)
@@ -26,6 +34,11 @@ export default class Header extends Component {
                         <Nav.Link href="share">Share File</Nav.Link>
                         <Nav.Link href="files">Check Files</Nav.Link>
                     </Nav>
+                {this.state.username ? 
+                <Navbar.Text className="mr-4">
+                    Signed in as: <span className="bold">{this.state.username}</span>
+                </Navbar.Text>
+                : ''}
                 <Button variant="outline-danger" onClick={ this.handleSignOut.bind(this) }>Sign Out</Button>
                 </Navbar.Collapse>
             </Navbar>
@@ -33,6 +46,9 @@ export default class Header extends Component {
     }
 
     componentWillMount() {
+        // Get Username
+        this.setState({ username: loadUserData().username });
+
         // Store Public key
         const privateKey = new Buffer(loadUserData().appPrivateKey, 'hex');
         const publicKey = '0x' + ethUtils.privateToPublic(privateKey).toString('hex');
