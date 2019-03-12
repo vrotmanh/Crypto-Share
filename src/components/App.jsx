@@ -28,37 +28,38 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <div className="App Site">
+          <div className="Site-content">
           { !isUserSignedIn() ?
             <Signin/>
             : 
-            <div className="App Site">
-              <div className="Site-content">
-                <Header/>
-                <Router history={history}>
-                  <main>
-                    <Switch>
-                      <Route
-                        exact
-                        path="/files"
-                        component={CheckFiles}
-                      />
-                      <Route
-                        exact
-                        path="/share"
-                        component={ShareFile}
-                      />
-                      <Route
-                        exact
-                        path="*"
-                        component={Home}
-                      />
-                    </Switch>
-                  </main>
-                </Router>  
-              </div>  
-              <Footer/>
-            </div>
-          }
+            <div>
+              <Header/>
+              <Router history={history}>
+                <main>
+                  <Switch>
+                    <Route
+                      exact
+                      path="/files"
+                      component={CheckFiles}
+                    />
+                    <Route
+                      exact
+                      path="/share"
+                      component={ShareFile}
+                    />
+                    <Route
+                      exact
+                      path="*"
+                      component={Home}
+                    />
+                  </Switch>
+                </main>
+              </Router>
+            </div> }
+          </div>
+          <Footer/>
+        </div>
       </div>
     );
   }
