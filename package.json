@@ -1,7 +1,7 @@
 {
-  "name": "hello-blockstack",
-  "version": "0.0.0",
-  "description": "A simple Blockstack app using ReactJS",
+  "name": "crypto-share",
+  "version": "0.0.1",
+  "description": "Crypto Share is a dapp to share encrypted files using Blockstack",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -9,12 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blockstack/hello-blockstack.git"
+    "url": "git+https://github.com/vrotmanh/Crypto-Share"
   },
-  "bugs": {
-    "url": "https://github.com/blockstack/hello-blockstack/issues"
-  },
-  "homepage": "https://github.com/blockstack/hello-blockstack#readme",
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -35,8 +31,15 @@
   },
   "dependencies": {
     "blockstack": "^18.0.4",
-    "bootstrap": "^3.3.7",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "bootstrap": "^4.3.1",
+    "eth-crypto": "^1.2.3",
+    "ethereumjs-util": "^5.1.2",
+    "history": "^4.7.2",
+    "mime": "^2.4.0",
+    "react": "^16.8.4",
+    "react-bootstrap": "^1.0.0-beta.5",
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.8"
   }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "Hello, Blockstack",
+  "name": "Crypto Share",
   "start_url": "localhost:8080",
-  "description": "A simple demo of Blockstack Auth",
+  "description": "Crypto Share is a dapp to share encrypted files using Blockstack",
   "icons": [{
     "src": "http://localhost:8080/icon-192x192.png",
     "sizes": "192x192",

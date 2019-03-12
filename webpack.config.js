@@ -5,7 +5,8 @@ const webpack = require('webpack');
 // this will allow for the authRequest to see the file at www.example.com/manifest.json
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ManifestAssetPlugin = new CopyWebpackPlugin([ { from: 'src/assets/manifest.json', to: 'manifest.json' } ]);
-const IconAssetPlugin = new CopyWebpackPlugin([ { from: 'src/images/icon-192x192.png', to: 'icon-192x192.png' } ]);
+const IconAssetPlugin = new CopyWebpackPlugin([ { from: 'src/images/icon.png', to: 'icon-192x192.png' } ]);
+const FaviconAssetPlugin = new CopyWebpackPlugin([ { from: 'src/images/favicon.ico', to: 'favicon.ico' } ]);
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -22,7 +23,9 @@ module.exports = {
     filename: 'index_bundle.js',
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true
+    },
     watchOptions: { aggregateTimeout: 300, poll: 1000 },
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -42,5 +45,5 @@ module.exports = {
       { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]
   },
-  plugins: [HtmlWebpackPluginConfig, ManifestAssetPlugin, IconAssetPlugin]
+  plugins: [HtmlWebpackPluginConfig, ManifestAssetPlugin, IconAssetPlugin, FaviconAssetPlugin]
 }
