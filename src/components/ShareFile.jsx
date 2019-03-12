@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import { encrypt } from './../utils/encryption';
 import {
     getFile,
@@ -111,50 +112,57 @@ export default class ShareFile extends Component {
         return (
             <div>
                 <Container>
-                    <h1 className="mt-4 mb-4">Share File</h1>
+                    <Jumbotron>
+                        <h1 className="mt-4 mb-4">Share File</h1>
+                        <p>
+                            Share Files with you Blockstack Friend<br></br>
+                            Choose any file and the Blockstack username of your friend and file will be shared encrypted<br></br>
+                            Only your friend will be able to access it
+                        </p>
+                    </Jumbotron>
                     {this.state.errorMessage ? <Alert className="mt-4 mb-4" variant='danger'>{this.state.errorMessage}</Alert> : ''}
                     {this.state.successMessage ? <Alert className="mt-4 mb-4" variant='success'>{this.state.successMessage}</Alert> : ''}
                     {this.state.loading ? <ProgressBar now={this.state.progress} label={`${this.state.progress}%`} />: ''}
                     <Form>
-                        <Row>
-                            <Col md={4}>
-                                <Form.Group controlId="formUsername">
-                                    <Form.Label>Receiver's Blockstack Username</Form.Label>
-                                    <Form.Control 
-                                        onChange={this.onInputChange('username')} 
-                                        type="text" 
-                                        required
-                                        placeholder="Enter Username" 
-                                    />
-                                    <Form.Text className="text-muted">
-                                    Enter here the Blockstack username of the receiver
-                                    </Form.Text>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row className="mb-4">
-                            <Col>
-                                <Form.Group controlId="formFile">
-                                    <Form.Label>File to Share</Form.Label>
-                                    <Form.Control 
-                                        onChange={this.onInputChange('file')} 
-                                        type="file"
-                                        accept='.json' 
-                                        ref={this.fileInput}
-                                        required
-                                        placeholder="Enter File" 
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Button variant="outline-primary" type="submit" onClick={ this.shareFile.bind(this) }>Share File</Button>
-                            </Col>
-                        </Row>
-                    </Form>
-                </Container>
-            </div>
+                    <Row>
+                        <Col md={4}>
+                            <Form.Group controlId="formUsername">
+                                <Form.Label>Receiver's Blockstack Username</Form.Label>
+                                <Form.Control 
+                                    onChange={this.onInputChange('username')} 
+                                    type="text" 
+                                    required
+                                    placeholder="Enter Username" 
+                                />
+                                <Form.Text className="text-muted">
+                                Enter here the Blockstack username of the receiver
+                                </Form.Text>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row className="mb-4">
+                        <Col>
+                            <Form.Group controlId="formFile">
+                                <Form.Label>File to Share</Form.Label>
+                                <Form.Control 
+                                    onChange={this.onInputChange('file')} 
+                                    type="file"
+                                    accept='.json' 
+                                    ref={this.fileInput}
+                                    required
+                                    placeholder="Enter File" 
+                                />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Button variant="outline-primary" type="submit" onClick={ this.shareFile.bind(this) }>Share File</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Container>
+        </div>
         );
     }
 }
