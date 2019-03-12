@@ -11,7 +11,7 @@ export default class Home extends Component {
           <Jumbotron>
             <h1 className="mt-4 mb-4">Home</h1>
             <p>
-              Crypto Share is a simple decentralize dapp to share encrypted files using Blockstack.
+              Crypto Share is a decentralize app to share encrypted files using Blockstack.
             </p>
             <p>
               <Button variant="primary" className="mr-2" href="/share">Share a File</Button>

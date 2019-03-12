@@ -9,6 +9,7 @@ import {
 
 // Components
 import Header from './Header.jsx'
+import Footer from './Footer.jsx'
 import Home from './Home.jsx'
 import Signin from './Signin.jsx'
 import ShareFile from './ShareFile.jsx'
@@ -30,29 +31,32 @@ export default class App extends Component {
           { !isUserSignedIn() ?
             <Signin/>
             : 
-            <div>
-              <Header/>
-              <Router history={history}>
-                <main>
-                  <Switch>
-                    <Route
-                      exact
-                      path="/files"
-                      component={CheckFiles}
-                    />
-                    <Route
-                      exact
-                      path="/share"
-                      component={ShareFile}
-                    />
-                    <Route
-                      exact
-                      path="*"
-                      component={Home}
-                    />
-                  </Switch>
-                </main>
-              </Router>       
+            <div className="App Site">
+              <div className="Site-content">
+                <Header/>
+                <Router history={history}>
+                  <main>
+                    <Switch>
+                      <Route
+                        exact
+                        path="/files"
+                        component={CheckFiles}
+                      />
+                      <Route
+                        exact
+                        path="/share"
+                        component={ShareFile}
+                      />
+                      <Route
+                        exact
+                        path="*"
+                        component={Home}
+                      />
+                    </Switch>
+                  </main>
+                </Router>  
+              </div>  
+              <Footer/>
             </div>
           }
       </div>
