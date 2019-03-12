@@ -1,13 +1,22 @@
-import React, { Component, Link } from 'react';
-import Profile from './Profile.jsx';
-import Signin from './Signin.jsx';
+import React, { Component } from 'react';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import {
   isSignInPending,
   isUserSignedIn,
-  redirectToSignIn,
   handlePendingSignIn,
-  signUserOut,
 } from 'blockstack';
+
+// Components
+import Header from './Header.jsx'
+import Home from './Home.jsx'
+import Signin from './Signin.jsx'
+import ShareFile from './ShareFile.jsx'
+import CheckFiles from './CheckFiles.jsx'
+
+const history = createHistory({
+  basename: '',
+});
 
 export default class App extends Component {
 
@@ -15,25 +24,37 @@ export default class App extends Component {
   	super(props);
   }
 
-  handleSignIn(e) {
-    e.preventDefault();
-    redirectToSignIn();
-  }
-
-  handleSignOut(e) {
-    e.preventDefault();
-    signUserOut(window.location.origin);
-  }
-
   render() {
     return (
-      <div className="site-wrapper">
-        <div className="site-wrapper-inner">
+      <div>
           { !isUserSignedIn() ?
-            <Signin handleSignIn={ this.handleSignIn } />
-            : <Profile handleSignOut={ this.handleSignOut } />
+            <Signin/>
+            : 
+            <div>
+              <Header/>
+              <Router history={history}>
+                <main>
+                  <Switch>
+                    <Route
+                      exact
+                      path="/files"
+                      component={CheckFiles}
+                    />
+                    <Route
+                      exact
+                      path="/share"
+                      component={ShareFile}
+                    />
+                    <Route
+                      exact
+                      path="*"
+                      component={Home}
+                    />
+                  </Switch>
+                </main>
+              </Router>       
+            </div>
           }
-        </div>
       </div>
     );
   }

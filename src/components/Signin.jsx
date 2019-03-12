@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
-import { isUserSignedIn } from 'blockstack';
+import Button from 'react-bootstrap/Button';
+import { redirectToSignIn } from 'blockstack';
 
 export default class Signin extends Component {
-  constructor(props) {
-    super(props);
+
+  handleSignIn(e) {
+    e.preventDefault();
+    const origin = window.location.origin;
+    redirectToSignIn(origin, origin + '/manifest.json');
   }
 
   render() {
-    const { handleSignIn } = this.props;
-
     return (
-      <div className="panel-landing" id="section-1">
-        <h1 className="landing-heading">Hello, Blockstack!</h1>
-        <p className="lead">
-          <button
-            className="btn btn-primary btn-lg"
-            id="signin-button"
-            onClick={ handleSignIn.bind(this) }
-          >
-            Sign In with Blockstack
-          </button>
-        </p>
+      <div>
+        <h1 className='title'>Crypto Share</h1>
+        <Button className='m-4' variant="outline-primary" onClick={ this.handleSignIn.bind(this) }>Sign In with Blockstack</Button>
       </div>
     );
   }
