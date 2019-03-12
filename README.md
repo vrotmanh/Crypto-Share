@@ -6,7 +6,7 @@ Crypto Share is a Decentralized App (Dapp) to share encrypted files using Blocks
 
 ## Demo Video
 
-#### [Watch it Here](https://drive.google.com/file/d/1MeRh_H55I-WC8LkaiVhgcv2T2UbYV9Hi/view)
+#### [Watch it Here](https://drive.google.com/file/d/1MeRh_H55I-WC8LkaiVhgcv2T2UbYV9Hi)
 
 #### 
 
@@ -19,3 +19,10 @@ npm install
 npm start
 ```
 
+
+
+## Code Explanation Video
+
+#### [Watch it Here](https://drive.google.com/open?id=1yKY8fjzZk8quUSQKpR3Z2mQuHqmj7XnB)
+
+#### 
