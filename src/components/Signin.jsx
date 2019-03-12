@@ -7,7 +7,7 @@ export default class Signin extends Component {
   handleSignIn(e) {
     e.preventDefault();
     const origin = window.location.origin;
-    redirectToSignIn(origin, origin + '/manifest.json');
+    redirectToSignIn(origin, origin + '/manifest.json', ['store_write', 'publish_data']);
   }
 
   render() {

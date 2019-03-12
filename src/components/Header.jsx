@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import ethUtils from 'ethereumjs-util';
 import {
     signUserOut,
+    loadUserData,
+    putFile,
   } from 'blockstack';
+  
 
 export default class Header extends Component {
-
     handleSignOut(e) {
         e.preventDefault();
         signUserOut(window.location.origin)
@@ -27,5 +30,12 @@ export default class Header extends Component {
                 </Navbar.Collapse>
             </Navbar>
         );
+    }
+
+    componentWillMount() {
+        // Store Public key
+        const privateKey = new Buffer(loadUserData().appPrivateKey, 'hex');
+        const publicKey = '0x' + ethUtils.privateToPublic(privateKey).toString('hex');
+        putFile('pubKey.json', JSON.stringify({ publicKey: publicKey }), { encrypt: false });
     }
   };
