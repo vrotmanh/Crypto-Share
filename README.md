@@ -19,6 +19,8 @@ npm install
 npm start
 ```
 
+Crypto Share will run on: http://localhost:8080/
+
 
 
 ## Code Explanation Video
